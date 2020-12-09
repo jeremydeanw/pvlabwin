@@ -1,0 +1,23 @@
+[Project]
+FileName=C:\progetti\progc\pvlabwin\Pvlabwin.dev
+Name=PvLabWin
+Use_gpp=1
+UnitCount=4
+ResFiles=C:\progetti\PROGC\PvLabWin\pvwinres.rc
+NoConsole=1
+IsDll=0
+Icon=C:\DEV-C_~1\BIN\Mainicon.ico
+ObjFile=C:\Dev-C++\Lib\libcomctl32.a C:\Dev-C++\Lib\libgdi32.a
+
+[Unit1]
+FileName=C:\progetti\PROGC\PvLabWin\pvwin.cpp
+
+[Unit2]
+FileName=C:\progetti\PROGC\PvLabWin\curvedlg.cpp
+
+[Unit3]
+FileName=C:\progetti\PROGC\PvLabWin\maindlg.cpp
+
+[Unit4]
+FileName=C:\progetti\PROGC\PvLabWin\filedlg.cpp
+
