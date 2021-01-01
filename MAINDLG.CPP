@@ -27,17 +27,17 @@ char* szAmplXform[ NUM_AMPL_XFORM ] = {
 char* szMiscXform[ NUM_MISC_XFORM ] = {
 	"Delay vs. Frequency", "Stereo-ization", "Morphing (Interpolation)", "Morphing (Cross-synthesis)", "Morphing (Density)" };
 
-#define NUM_FFT_PTS 7
+#define NUM_FFT_PTS 9
 char* szFftPts[ NUM_FFT_PTS ] = {
-	"128", "256", "512", "1024", "2048", "4096", "8192" };
+	"32", "64", "128", "256", "512", "1024", "2048", "4096", "8192" };
 
 #define NUM_WIN_TYPES 4
 char* szWinTypes[ NUM_WIN_TYPES ] = {
 	"Bartlett", "Hamming", "Hanning", "Blackman" };
 
-#define NUM_FRAME_INCR 5
+#define NUM_FRAME_INCR 6
 char* szFrameIncr[ NUM_FRAME_INCR ] = {
-	"32", "64", "128", "256", "512" };
+	"16", "32", "64", "128", "256", "512" };
 
 
 // ampiezze massime
@@ -652,9 +652,9 @@ void MainDlg::Init( HWND hwndDlg )
 	SendMessage( m_hwndCmbAmpl, CB_SETCURSEL, 0, 0 );
 	SendMessage( m_hwndCmbMisc, CB_SETCURSEL, 0, 0 );
 
-	SendMessage( m_hwndCmbFft, CB_SETCURSEL, 3, 0 ); // default 1024 punti, finestra di Blackman, frame di 128 punti
+	SendMessage( m_hwndCmbFft, CB_SETCURSEL, 5, 0 ); // default 1024 punti, finestra di Blackman, frame di 128 punti
 	SendMessage( m_hwndCmbWin, CB_SETCURSEL, 3, 0 );
-	SendMessage( m_hwndCmbIncr, CB_SETCURSEL, 2, 0 );
+	SendMessage( m_hwndCmbIncr, CB_SETCURSEL, 3, 0 );
 
 	// checkbox
 	SendMessage( m_hwndBypTime, BM_SETCHECK, (WPARAM)BST_CHECKED, 0 );
@@ -831,8 +831,8 @@ bool MainDlg::Analyze( char* infile, char* outfile, float* pMaxAmpl, float* pMax
 
 	long i,j,k;
 	long remaining = nSamples;
-	long frameIncr = 1L << ( SendMessage( m_hwndCmbIncr, CB_GETCURSEL, 0, 0 ) + 5 );
-	unsigned long log2pts = SendMessage( m_hwndCmbFft, CB_GETCURSEL, 0, 0 ) + 7;
+	long frameIncr = 1L << ( SendMessage( m_hwndCmbIncr, CB_GETCURSEL, 0, 0 ) + 4 /*5*/ );
+	unsigned long log2pts = SendMessage( m_hwndCmbFft, CB_GETCURSEL, 0, 0 ) + 5 /*7*/;
 	long frameSize = 1L << log2pts;
 	long WinType = SendMessage( m_hwndCmbWin, CB_GETCURSEL, 0, 0 );
 

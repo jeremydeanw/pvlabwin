@@ -10,7 +10,8 @@ MainDlg g_MainDlg;
 CurveDlg g_CurveDlg;
 FileDlg g_FileDlg;
 
-int STDCALL
+/*int STDCALL */
+int WINAPI
 WinMain (HINSTANCE hInst, HINSTANCE hPrev, LPSTR lpCmd, int nShow)
 {
 	if( GetCurrentDirectory( 256, g_CurDir ) == 0 )
@@ -22,4 +23,6 @@ WinMain (HINSTANCE hInst, HINSTANCE hPrev, LPSTR lpCmd, int nShow)
 
 	if( !g_MainDlg.Show( hInst ) )
 		MessageBox( NULL, "Error (Show main dialog)", "Error", MB_OK );
+		
+	return 0;	
 }
